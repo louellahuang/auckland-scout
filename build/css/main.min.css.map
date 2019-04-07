@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.min.css"],"names":[],"mappings":"AAEA,KACE,WAAA,8FAAA,WAAA","file":"main.min.css","sourcesContent":["$primary-gradient: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);\n\nbody {\n  background: $primary-gradient;\n}\n\n"]}
