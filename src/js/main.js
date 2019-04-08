@@ -1,21 +1,34 @@
+// Tim's work START
+// Categories:
+// Parks: 4bf58dd8d48988d163941735
+// Beaches: 4bf58dd8d48988d1e2941735
+// Pools: 4bf58dd8d48988d15e941735
+// Scenic Lookout: 4bf58dd8d48988d165941735
+// Skate Park: 4bf58dd8d48988d167941735
+
+
 // Identifiers
 // Every ID prefixed with 'js' is a DOM element
 const jsCatParks = document.getElementById('jsCatParks');
 const jsCatBeaches = document.getElementById('jsCatBeaches');
 const jsCatPlaygrounds = document.getElementById('jsCatPlaygrounds');
+// Tim's work END
 
-// Louella's Work - Modal pop up
+
+
+// Louella's Work START - Modal pop up
 const jsModalLongTitle = document.getElementById('jsModalLongTitle');
 const jsVenueDescription = document.getElementById('jsVenueDescription');
 const jsVenueWebsite = document.getElementById('jsVenueWebsite');
 const jsMiniMap = document.getElementById('jsMiniMap');
+// Louella's Work END - Modal pop up
 
 
-// Map work by Nikita
+// Map work by Nikita START
 $(function(){
 
 let center = [-36.8977931, 174.7854973];
-let mymap = L.map('mapid').setView(center, 12);
+let mymap = L.map('mapid').setView(center, 10);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidGhhbHl4OTAiLCJhIjoiY2o2YjdrZHRlMWJmYjJybDd2cW1rYnVnNSJ9.j_DQLfixHfhioVjH6qmqkw', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -32,9 +45,10 @@ L.circle(center, {
 		fill: true
 	}).addTo(mymap);
 
-// Map work ends
+// Map work by Nikita END
 
-// Louella's Work - Modal pop up
+
+// Louella's Work START - Modal pop up
 $('#myModal').modal(options);
 $('.carousel').carousel();
 
