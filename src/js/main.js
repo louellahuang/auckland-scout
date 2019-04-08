@@ -10,6 +10,7 @@ const jsVenueDescription = document.getElementById('jsVenueDescription');
 const jsVenueWebsite = document.getElementById('jsVenueWebsite');
 const jsMiniMap = document.getElementById('jsMiniMap');
 
+
 // Modal pop up
 $('#myModal').modal(options);
 
