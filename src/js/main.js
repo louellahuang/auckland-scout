@@ -1,3 +1,3 @@
-document.addEventListener('DOMContentLoaded', () =>{
-  console.log('Hello Javascripts');
-})
+const jsCatParks = document.getElementById('jsCatParks');
+const jsCatBeaches = document.getElementById('jsCatBeaches');
+const jsCatPlaygrounds = document.getElementById('jsCatPlaygrounds');
