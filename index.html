@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,28 +9,50 @@
   <link rel="stylesheet" href="build/css/bootstrap.min.css">
   <link rel="stylesheet" href="build/css/main.min.css">
 </head>
+
 <body>
+  <div class="container">
 
-  <!-- Contain dropdown -- TIM -->
- <header>
+    <!--  Dropdown -- TIM -->
+    <header class="">
 
- </header>
+      <div class="site-title p-2">
+        AKL Scout
+      </div>
 
- <!-- Map - NIKITA -->
- <main>
+      <div class="dropdown">
+        <button class="btn btn-block btn-primary dropdown-toggle px-3" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="0,10">
+          Category
+        </button>
+        <div class="dropdown-menu dropdown-menu-right text-center w-100 bg-secondary"
+          aria-labelledby="dropdownMenuButton">
+          <a id="jsCatParks" class="dropdown-item py-2 text-light" href="#">Parks</a>
+          <div class="separator-line"></div>
+          <a id="jsCatBeaches" class="dropdown-item py-2 text-light" href="#">Beaches</a>
+          <div class="separator-line"></div>
+          <a id="jsCatPlaygrounds" class="dropdown-item py-2 text-light" href="#">Playgrounds</a>
+        </div>
+      </div>
 
- </main>
+    </header>
 
- <!-- Modal -- LOUELLA -->
- <div>
+    <!-- Map - NIKITA -->
+    <main>
 
- </div>
+    </main>
 
-  
+    <!-- Modal -- LOUELLA -->
+    <div>
+
+    </div>
+
+  </div>
   <script src="/build/js/jquery.min.js"></script>
   <!-- bootstrap including Popper.js -->
   <script src="/build/js/bootstrap.bundle.min.js"></script>
   <!-- Our Javascript -->
   <script src="/build/js/app.min.js"></script>
 </body>
+
 </html>
