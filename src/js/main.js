@@ -35,13 +35,23 @@ L.circle(center, {
 // Map work ends
 
 // Louella's Work - Modal pop up
+
 // Load modal
 $('#myModal').modal();
 
 // Load Carousel
 $('.carousel').carousel();
 
+let userLocation = [-36.8977931, 174.7854973];
+let miniMap = L.map('jsMiniMap').setView(userLocation, 17);
 
+
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
+}).addTo(miniMap);
 
 
 //Louella work end
