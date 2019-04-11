@@ -61,6 +61,7 @@ function bootstrap() {
 
 // JavaScript stuff...
 function scripts() {
+  // return gulp.src(['src/js/main.js', 'src/js/foursquare.js'])
   return gulp.src(paths.js.src)
   .pipe(eslint.format({
     'rules': {
