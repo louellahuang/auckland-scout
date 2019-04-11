@@ -72,6 +72,7 @@ function extractNeededData(data) {
     });
   });
 
+  plotMarkers(venuesForMap);
   console.log(venuesForMap);
 }
 

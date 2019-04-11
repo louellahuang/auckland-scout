@@ -75,5 +75,21 @@ L.circle(center, {
 //Louella
 modal();
 
-  
+// nikita - putting markers on the map
+function plotMarkers(v){
+
+v.forEach(function(venue) {
+		var serviceIcon = L.icon({
+			//iconUrl: venue.iconImage,
+			iconSize: [ 72 , 72 ],
+			popupAnchor: [ 0 , -36 ]
+		});
+		var marker = L.marker(venue.latlng).addTo(map);
+		marker.bindPopup('<div>' + venue.name + '<div>')
+		
+		//$(marker._icon).addClass('marker-service');
+		
+	});	
+};
+
 };
