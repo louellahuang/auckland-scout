@@ -18,6 +18,7 @@ const jsCatLookouts = document.getElementById('jsCatLookouts');
 
 
 // Louella's Work START - Modal pop up
+const jsToolTipButton = document.getElementById('#modalCenter');
 const jsModalLongTitle = document.getElementById('jsModalLongTitle');
 const jsVenueDescription = document.getElementById('jsVenueDescription');
 const jsVenueWebsite = document.getElementById('jsVenueWebsite');

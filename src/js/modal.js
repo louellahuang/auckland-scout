@@ -9,10 +9,11 @@
 // const venueId = '59a45921351e3d43b07028b5';
 // const venueUrl = 'https://api.foursquare.com/v2/venues/' + venueId;
 
-
 // Load modal
 function modal() {
     $('#modalCenter').on('shown.bs.modal', function () {
+        //Add venue details through API call
+
         // Insert Mini map
         // https://leafletjs.com/reference-1.0.0.html
         let userLocation = [-36.8977931, 174.7854973];
@@ -26,39 +27,72 @@ function modal() {
             id: 'mapbox.streets',
             accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
         }).addTo(miniMap);
+
+
     });
 }
 
-// Load Carousel
-$('.carousel').carousel();
-
-
 // Ajax request to a specific venue
-// let venueUrl = 'https://api.foursquare.com/v2/venues/explore' + key + '&ll=-36.8446152873055 , 174.76662397384644' + '&radius=60';
-// $.ajax({
 
-// 	url: venueUrl,
-// 	dataType: 'jsonp',
+// On Click of each marker - make AJAX request for Markers Venue data
+marker.on('click', function () {
+    var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
 
-// 	// let's show a little preloader to the user while they wait for a nice User Experience
-// 	beforeSend: function(res) {
-// 		$('<div class="pre-loader"> ... loading portfolio ... </div>').prependTo('body');
-// 	},
+    // ajax request for each venue data
+    $.ajax({
 
-// 	// when the ajax request is complete do all of these things
-// 	success: function(res) {
+        url: venueUrl,
+        dataType: 'jsonp',
 
-// 		console.log(res);
+        success: function (res) {
 
-// 		// Success! We can get rid of the preloader now...
-// 		$('.pre-loader').detach();
+            // Expose data of VENUE we just CLICKED
+            console.log(res);
+
+            $('.modal-title').text(res.response.venue.name);
+
+            // Clear/reset modal body copy so it's empty, before we add new data
+            $('.modal-body').empty();
+
+            if (res.response.venue.description !== undefined) {
+                $('.modal-body').append('<p class="description">' + res.response.venue.description + '</p>');
+            }
+
+            //Construct modal/
+            if (res.response.venue.photos.groups.length > 0) {
+                var photoPrefix = res.response.venue.bestPhoto.prefix;
+                var photoSuffix = res.response.venue.bestPhoto.suffix;
+                $('<img src=' + photoPrefix + '100x100' + photoSuffix + '>').appendTo('.modal-body');
+            }
+
+            $('.modal-body').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
+
+            if (res.response.venue.likes.count > 9) {
+                $('.likes').css('font-weight', 'bold');
+            }
+
+            if (res.response.venue.rating !== undefined) {
+                $('.modal-body').append('<p class="rating"><span class="bold">Rating:</span> ' + res.response.venue.rating + '/10 from ' + res.response.venue.ratingSignals + ' users.</p>');
+            }
+
+            if (res.response.venue.contact.phone !== undefined) {
+                $('.modal-body').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
+            }
+
+            $('.modal-body').append('<p class="address">' + res.response.venue.location.address + ', ' + res.response.venue.location.city + '</p>');
+
+            // Now toggle the Modal
+            $('#myModal').modal('show');
+        } // End Success
+
+        // if the ajax request fails do these things as a fallback
+        error: function (res) {
+            $('<h1> Error!! </h1>').appendTo('body');
+        } // End Error
+
+    }); // END AJAX request for venue data
+
+}) // END marker click function
 
 
-// 	},
 
-// 	// if the ajax request fails do these things as a fallback
-// 	error: function(res) {
-// 		$('<h1> Error!! </h1>').appendTo('body');
-// 	}
-
-// }); // END ajax request
