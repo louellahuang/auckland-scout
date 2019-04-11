@@ -1,3 +1,4 @@
+
 // Tim's work START
 // Categories:
 // Parks: 4bf58dd8d48988d163941735
@@ -9,6 +10,8 @@
 
 // Identifiers
 // Every ID prefixed with 'js' is a DOM element
+const jsCatDropdown = document.getElementById('jsCatDropdown');
+const jsCatTrending = document.getElementById('jsCatTrending');
 const jsCatParks = document.getElementById('jsCatParks');
 const jsCatBeaches = document.getElementById('jsCatBeaches');
 const jsCatLookouts = document.getElementById('jsCatLookouts');
@@ -23,10 +26,15 @@ const jsVenueWebsite = document.getElementById('jsVenueWebsite');
 const jsMiniMap = document.getElementById('jsMiniMap');
 // Louella's Work END - Modal pop up
 
-
-// Map work by Nikita START
 $(function(){
 
+  // identify the event target
+jsCatDropdown.addEventListener('click', (e) => {
+  identifyCategory(e.target);
+});
+
+
+// Map work by Nikita START
 let center = [-36.8977931, 174.7854973];
 let mymap = L.map('mapid').setView(center, 10);
 

@@ -1,11 +1,3 @@
-// Step 1 - Listen to div containing the a elements and identify the target that's clicked on
-const jsCatDropdown = document.getElementById('jsCatDropdown');
-// identify the event target
-jsCatDropdown.addEventListener('click', (e) => {
-  identifyCategory(e.target);
-});
-
-
 // Step 2 - Link the html element to the foursquare category ID
 function identifyCategory(e) {
   // declare variables
