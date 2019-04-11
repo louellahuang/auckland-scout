@@ -1,4 +1,3 @@
-
 // Tim's work START
 // Categories:
 // Parks: 4bf58dd8d48988d163941735
@@ -73,8 +72,8 @@ L.circle(center, {
 // Map work by Nikita END
 
 
-// Louella's Work START - Modal pop up
-$('#myModal').modal(options);
-$('.carousel').carousel();
+//Louella
+modal();
 
-};
+  
+});
