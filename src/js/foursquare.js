@@ -1,6 +1,6 @@
 // Step 1 - Listen to div containing the a elements and identify the target that's clicked on
 const jsCatDropdown = document.getElementById('jsCatDropdown');
-
+// identify the event target
 jsCatDropdown.addEventListener('click', (e) => {
   identifyCategory(e.target);
 });
@@ -8,11 +8,10 @@ jsCatDropdown.addEventListener('click', (e) => {
 
 // Step 2 - Link the html element to the foursquare category ID
 function identifyCategory(e) {
-
   // declare variables
   let chosenRadius = '0';
   let chosenCategory = '0';
-
+  // simple conditional to match the DOM element to the api ID
   if (e.id == 'jsCatParks') {
     chosenRadius = '2000';
     chosenCategory = '4bf58dd8d48988d163941735';
@@ -30,6 +29,7 @@ function identifyCategory(e) {
   }
 }
 
+
 // Step 3 - Create the search query request uri
 function createSearchRequestURI(rad, cat) {
   const baseURI = 'https://api.foursquare.com/v2/venues/search?v=20170901';
@@ -40,18 +40,15 @@ function createSearchRequestURI(rad, cat) {
   const radius = '&radius=' + rad;
   // This value will be a variable
   const categoryId = '&categoryId=' + cat;
-
   // Put all the pieces together
   const requestURI = baseURI + client_id + client_secret + latlong + radius + categoryId;
   
   makeSearchRequest(requestURI);
-
-  //console.log(requestURI);
 }
+
 
 // Step 4 - Make the actual request
 function makeSearchRequest(uri) {
-
   fetch(uri)
     .then(function(response) {
       return response.json();
@@ -66,6 +63,7 @@ function makeSearchRequest(uri) {
       console.log('Houston we have a problem...');
     });
 }
+
 
 // Step 5 - Extract the data we are using from the json response
 function extractNeededData(data) {
