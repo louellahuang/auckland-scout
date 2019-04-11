@@ -47,8 +47,7 @@ function makeSearchRequest(uri) {
     })
     .then(function(myJson) {
       extractNeededData(myJson.response.venues);
-      // console.log(myJson.response.venues);
-      // console.log(JSON.stringify(myJson));
+      console.log(myJson.response.venues);
     })
     .catch(function() {
       // Code for handling errors
@@ -62,13 +61,20 @@ function extractNeededData(data) {
 
   // declare empty array
   const venuesForMap = [];
+  // declare array for lat and long
+  const latlong = [];
+
   // Loop through json response
   data.forEach(venue => {
-    // Push the values we need into an array to use for the map
+
+    // Push latitude and long into their array
+    latlong.push(venue.location.lat + ',' + venue.location.lng);
+
+    // Push the name, ID, and latlng into an array to use for the map
     venuesForMap.push({
       name: venue.name,
-      lat: venue.location.lat,
-      lng: venue.location.lng
+      id: venue.id,
+      latlng: latlong
     });
   });
 
