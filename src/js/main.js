@@ -12,10 +12,27 @@ const jsMiniMap = document.getElementById('jsMiniMap');
 
 
 // Map work by Nikita
-$(function(){
+
+$(function() {
+	let zoom = 11;
+
+	if ($(window).width() < 768) {
+   		let zoom = 10;
+   		console.log('less than 768');
+   		createMap(zoom);
+	}
+	else {
+	   let zoom = 11;
+	   console.log('more than 768');
+	   createMap(zoom);
+	};
+
+});
+
+function createMap(z) {
 
 let center = [-36.8977931, 174.7854973];
-let mymap = L.map('mapid').setView(center, 12);
+let mymap = L.map('mapid').setView(center, z);
 
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoidGhhbHl4OTAiLCJhIjoiY2o2YjdrZHRlMWJmYjJybDd2cW1rYnVnNSJ9.j_DQLfixHfhioVjH6qmqkw', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -38,6 +55,4 @@ L.circle(center, {
 $('#myModal').modal(options);
 $('.carousel').carousel();
 
-
-});
-
+};
