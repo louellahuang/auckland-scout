@@ -51,8 +51,8 @@ L.circle(center, {
 
 // Map work ends
 
-// Louella's Work - Modal pop up
-$('#myModal').modal(options);
-$('.carousel').carousel();
+//Louella
+modal();
 
-};
+});
+
