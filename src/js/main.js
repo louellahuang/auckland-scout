@@ -75,21 +75,20 @@ L.circle(center, {
 //Louella
 modal();
 
+};
 // nikita - putting markers on the map
 function plotMarkers(v){
 
 v.forEach(function(venue) {
 		var serviceIcon = L.icon({
-			//iconUrl: venue.iconImage,
+			iconUrl: 'img/beach.png',
 			iconSize: [ 72 , 72 ],
 			popupAnchor: [ 0 , -36 ]
 		});
-		var marker = L.marker(venue.latlng).addTo(map);
+		var marker = L.marker(venue.latlng,{icon:serviceIcon}).addTo(mymap);
 		marker.bindPopup('<div>' + venue.name + '<div>')
 		
 		//$(marker._icon).addClass('marker-service');
 		
 	});	
-};
-
 };
