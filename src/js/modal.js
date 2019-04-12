@@ -1,13 +1,11 @@
 //Work from Louella
 
 // foursquare Oauth
-// const version = '?v=20170901';
-// const clientid = '&client_id=JSBCLUKSAG3BD0D1BOIRNAEMKWTQY0P401LJCYETQQXBS3W0';
-// const clientSecret = '&client_secret=HSRPRSP1SQJWTG3NN2EOBPCASHO52SBOU4ZPFXOJPZYIL3DK';
-// const key = version + clientid + clientSecret;
+const version = '?v=20170901';
+const key = version + client_id + client_secret;
 
-// const venueId = '59a45921351e3d43b07028b5';
-// const venueUrl = 'https://api.foursquare.com/v2/venues/' + venueId;
+const venueId = '59a45921351e3d43b07028b5';
+const venueUrl = 'https://api.foursquare.com/v2/venues/' + venueId;
 
 // Load modal
 function modal() {
@@ -28,7 +26,6 @@ function modal() {
             accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
         }).addTo(miniMap);
 
-
     });
 }
 
@@ -36,7 +33,7 @@ function modal() {
 
 // On Click of each marker - make AJAX request for Markers Venue data
 marker.on('click', function () {
-    var venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
+    let venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
 
     // ajax request for each venue data
     $.ajax({
@@ -67,14 +64,6 @@ marker.on('click', function () {
 
             $('.modal-body').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
 
-            if (res.response.venue.likes.count > 9) {
-                $('.likes').css('font-weight', 'bold');
-            }
-
-            if (res.response.venue.rating !== undefined) {
-                $('.modal-body').append('<p class="rating"><span class="bold">Rating:</span> ' + res.response.venue.rating + '/10 from ' + res.response.venue.ratingSignals + ' users.</p>');
-            }
-
             if (res.response.venue.contact.phone !== undefined) {
                 $('.modal-body').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
             }
@@ -85,14 +74,9 @@ marker.on('click', function () {
             $('#myModal').modal('show');
         } // End Success
 
-        // if the ajax request fails do these things as a fallback
-        error: function (res) {
-            $('<h1> Error!! </h1>').appendTo('body');
-        } // End Error
-
     }); // END AJAX request for venue data
 
-}) // END marker click function
+}); // END marker click function
 
 
 
