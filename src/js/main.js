@@ -19,21 +19,8 @@ let mymap;
 let zoom = 0;
 // Tim's work END
 
-<<<<<<< HEAD
-$(function(){
-=======
-
-// Louella's Work START - Modal pop up
-const jsModalLongTitle = document.getElementById('jsModalLongTitle');
-const jsVenueDescription = document.getElementById('jsVenueDescription');
-const jsVenueWebsite = document.getElementById('jsVenueWebsite');
-const jsMiniMap = document.getElementById('jsMiniMap');
-// Louella's Work END - Modal pop up
-
-
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM ready!");
->>>>>>> 5e2db60999559095a6630ffae1fee633a0f45560
 
   // identify the event target
   jsCatDropdown.addEventListener('click', (e) => {

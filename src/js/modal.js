@@ -22,11 +22,57 @@ function modal() {
     });
 }
 
-// On Click of each marker - make AJAX request for Markers Venue data
-function showVenueDetails() {
-    let venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
+const baseURL = 'https://api.foursquare.com/v2/venues/';
+let venueUrl = baseURL + this.venueid + key;
 
-    // ajax request for each venue data
+// Step 3 - Create the search query request uri
+function createSearchRequestURI(rad, cat) {
+    const baseURI = 'https://api.foursquare.com/v2/venues/search?v=20170901';
+    // const client_id = '&client_id=' + 'Q5PQQNTJS4UGM10I1RWODUVC4XS2PBULBDYZKFLAFECJ4ZIM';
+    // const client_secret = '&client_secret=' + '4TMTXMB4LL35O3GR1QXONNBAJ5OCGZUO5HLWAQQGSHHPZZV2';
+    const latlong = '&ll=' + '-36.8786499,174.7602798';
+    // This value will be a variable
+    const radius = '&radius=' + rad;
+    // This value will be a variable
+    const categoryId = '&categoryId=' + cat;
+    // Put all the pieces together
+    const requestURI = baseURI + client_id + client_secret + latlong + radius + categoryId;
+    
+    makeSearchRequest(requestURI);
+  }
+  
+  
+  
+  
+  
+  
+  // Step 4 - Make the actual request
+  function makeSearchRequest(uri) {
+    fetch(uri)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(myJson) {
+        extractNeededData(myJson.response.venues);
+        //console.log(myJson.response.venues);
+      })
+      .catch(function(error) {
+        // Code for handling errors
+        console.log(error);
+      });
+  }
+
+
+
+
+
+
+
+function showVenueDetails(venueUrl) {
+
+
+    // Request for each venue data
+
     $.ajax({
 
         url: venueUrl,
