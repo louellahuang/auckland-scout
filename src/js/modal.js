@@ -1,38 +1,41 @@
 //Work from Louella
 
-// foursquare Oauth
 const version = '?v=20170901';
 const key = version + client_id + client_secret;
-
 const venueId = '59a45921351e3d43b07028b5';
 const venueUrl = 'https://api.foursquare.com/v2/venues/' + venueId;
+
+const jsPopUpButton = document.getElementById('#modalCenter');
+const jsModalLongTitle = document.getElementById('jsModalLongTitle');
+const jsVenueDescription = document.getElementById('jsVenueDescription');
+const jsVenueWebsite = document.getElementById('jsVenueWebsite');
+const jsMiniMap = document.getElementById('jsMiniMap');
+const jsDirections = document.getElementById('jsDirections');
+
 
 // Load modal
 function modal() {
     $('#modalCenter').on('shown.bs.modal', function () {
-        //Add venue details through API call
+    //Add venue details through API call
+    showVenueDetails();
 
-        // Insert Mini map
-        // https://leafletjs.com/reference-1.0.0.html
-        let userLocation = [-36.8977931, 174.7854973];
-        let miniMap = L.map('jsMiniMap', {
-            scrollWheelZoom: false
-        }).setView(userLocation, 17);
-
-        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-            maxZoom: 18,
-            id: 'mapbox.streets',
-            accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
-        }).addTo(miniMap);
-
-    });
+    // Insert Mini map with user location
+    // https://leafletjs.com/reference-1.0.0.html
+    let userLocation = [-36.8977931, 174.7854973];
+    let miniMap = L.map('jsMiniMap', {
+        scrollWheelZoom: false
+    }).setView(userLocation, 17);
+    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox.streets',
+        accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
+    }).addTo(miniMap);
+});
 }
 
-// Ajax request to a specific venue
-
 // On Click of each marker - make AJAX request for Markers Venue data
-marker.on('click', function () {
+function showVenueDetails() {
     let venueUrl = 'https://api.foursquare.com/v2/venues/' + this.venueid + key;
 
     // ajax request for each venue data
@@ -62,21 +65,19 @@ marker.on('click', function () {
                 $('<img src=' + photoPrefix + '100x100' + photoSuffix + '>').appendTo('.modal-body');
             }
 
-            $('.modal-body').append('<p class="likes"><span class="bold">Likes:</span> ' + res.response.venue.likes.count + '</p>');
-
             if (res.response.venue.contact.phone !== undefined) {
                 $('.modal-body').append('<p class="phone"><span class="bold">Phone:</span> ' + res.response.venue.contact.phone + '</p>');
             }
 
-            $('.modal-body').append('<p class="address">' + res.response.venue.location.address + ', ' + res.response.venue.location.city + '</p>');
-
+            // add address
+            if (res.response.venue.location.address !== undefined) {
+                jsVenueWebsite.innerHTML(res.response.venue.location.address + ', ' + res.response.venue.location.city)
+            }
+            
             // Now toggle the Modal
             $('#myModal').modal('show');
         } // End Success
 
     }); // END AJAX request for venue data
-
-}); // END marker click function
-
-
-
+}
+    

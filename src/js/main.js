@@ -16,16 +16,6 @@ const jsCatBeaches = document.getElementById('jsCatBeaches');
 const jsCatLookouts = document.getElementById('jsCatLookouts');
 // Tim's work END
 
-
-// Louella's Work START - Modal pop up
-const jsToolTipButton = document.getElementById('#modalCenter');
-const jsModalLongTitle = document.getElementById('jsModalLongTitle');
-const jsVenueDescription = document.getElementById('jsVenueDescription');
-const jsVenueWebsite = document.getElementById('jsVenueWebsite');
-const jsMiniMap = document.getElementById('jsMiniMap');
-// Louella's Work END - Modal pop up
-
-
 $(function(){
 
 // Detect screen width and change zoom accordingly - by Nikita
