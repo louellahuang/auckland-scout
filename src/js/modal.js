@@ -37,30 +37,30 @@ function createSearchRequestURI(rad, cat) {
     const categoryId = '&categoryId=' + cat;
     // Put all the pieces together
     const requestURI = baseURI + client_id + client_secret + latlong + radius + categoryId;
-    
+
     makeSearchRequest(requestURI);
-  }
-  
-  
-  
-  
-  
-  
-  // Step 4 - Make the actual request
-  function makeSearchRequest(uri) {
+}
+
+
+
+
+
+
+// Step 4 - Make the actual request
+function makeSearchRequest(uri) {
     fetch(uri)
-      .then(function(response) {
-        return response.json();
-      })
-      .then(function(myJson) {
-        extractNeededData(myJson.response.venues);
-        //console.log(myJson.response.venues);
-      })
-      .catch(function(error) {
-        // Code for handling errors
-        console.log(error);
-      });
-  }
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (myJson) {
+            extractNeededData(myJson.response.venues);
+            //console.log(myJson.response.venues);
+        })
+        .catch(function (error) {
+            // Code for handling errors
+            console.log(error);
+        });
+}
 
 
 
@@ -115,6 +115,10 @@ function showVenueDetails(venueUrl) {
             }
 
             // Insert Mini map with user location https://leafletjs.com/reference-1.0.0.html
+            // remove previously loaded map first
+            if (miniMap) {
+                miniMap.remove();
+            }
             let userLocation = [-36.8977931, 174.7854973];
             let miniMap = L.map('jsMiniMap', {
                 scrollWheelZoom: false
