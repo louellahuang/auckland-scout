@@ -47,11 +47,11 @@ function makeSearchRequest(uri) {
     })
     .then(function(myJson) {
       extractNeededData(myJson.response.venues);
-      console.log(myJson.response.venues);
+      //console.log(myJson.response.venues);
     })
-    .catch(function() {
+    .catch(function(error) {
       // Code for handling errors
-      console.log('Houston we have a problem...');
+      console.log(error);
     });
 }
 
@@ -61,26 +61,27 @@ function extractNeededData(data) {
 
   // declare empty array
   const venuesForMap = [];
-  // declare array for lat and long
-  const latlong = [];
 
   // Loop through json response
   data.forEach(venue => {
-
-    // Push latitude and long into their array
-    latlong.push(venue.location.lat + ',' + venue.location.lng);
 
     // Push the name, ID, and latlng into an array to use for the map
     venuesForMap.push({
       name: venue.name,
       id: venue.id,
-      latlng: latlong
+      latlng: 
+        [
+          venue.location.lat,
+          venue.location.lng
+        ]
+      
     });
   });
 
-  plotMarkers(venuesForMap);
-  console.log(venuesForMap);
+  createMap(venuesForMap);
 }
+
+
 
 
   
