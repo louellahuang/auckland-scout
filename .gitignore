@@ -4,7 +4,6 @@
 # Ignore build folder contents
 build/css
 build/js
-build/img
 
 ### macOS ###
 # General
