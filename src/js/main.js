@@ -86,9 +86,8 @@ v.forEach(function(venue) {
 			popupAnchor: [ 0 , -36 ]
 		});
 		var marker = L.marker(venue.latlng,{icon:serviceIcon}).addTo(mymap);
-		marker.bindPopup('<div>' + venue.name + '<div>')
-		
-		//$(marker._icon).addClass('marker-service');
+		marker.bindPopup('<div>' + venue.name + '</div>')
 		
 	});	
 };
+
