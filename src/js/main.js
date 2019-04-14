@@ -71,17 +71,17 @@ function createInitialMap() {
     maxZoom: 18,
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
-  }).addTo(mymap);
+}).addTo(mymap);
 
-  // radius
-  L.circle(center, {
-    radius: 21500,
-    color: 'salmon',
-    weight: 1,
-    fill: true
-  }).addTo(mymap);
+// radius
+L.circle(center, {
+		radius: 21500,
+		color: 'salmon',
+		weight: 1,
+		fill: true
+	}).addTo(mymap);
+// Map work by Nikita END
 }
-
 
 function createMap(v) {
 
@@ -121,7 +121,7 @@ function createMap(v) {
         popupAnchor: [0, -36]
       });
       var marker = L.marker(venue.latlng, { icon: serviceIcon }).addTo(mymap);
-      marker.bindPopup('<div>' + venue.name + '</div>')
+      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
 
     } catch (error) {
       console.log(error);
@@ -132,4 +132,3 @@ function createMap(v) {
    modal();
 
 }
-
