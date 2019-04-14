@@ -25,8 +25,8 @@ function identifyCategory(e) {
 // Step 3 - Create the search query request uri
 function createSearchRequestURI(rad, cat) {
   const baseURI = 'https://api.foursquare.com/v2/venues/search?v=20170901';
-  const client_id = '&client_id=' + 'Q5PQQNTJS4UGM10I1RWODUVC4XS2PBULBDYZKFLAFECJ4ZIM';
-  const client_secret = '&client_secret=' + '4TMTXMB4LL35O3GR1QXONNBAJ5OCGZUO5HLWAQQGSHHPZZV2';
+  // const client_id = '&client_id=' + 'Q5PQQNTJS4UGM10I1RWODUVC4XS2PBULBDYZKFLAFECJ4ZIM';
+  // const client_secret = '&client_secret=' + '4TMTXMB4LL35O3GR1QXONNBAJ5OCGZUO5HLWAQQGSHHPZZV2';
   const latlong = '&ll=' + '-36.8786499,174.7602798';
   // This value will be a variable
   const radius = '&radius=' + rad;
@@ -47,12 +47,11 @@ function makeSearchRequest(uri) {
     })
     .then(function(myJson) {
       extractNeededData(myJson.response.venues);
-      // console.log(myJson.response.venues);
-      // console.log(JSON.stringify(myJson));
+      //console.log(myJson.response.venues);
     })
-    .catch(function() {
+    .catch(function(error) {
       // Code for handling errors
-      console.log('Houston we have a problem...');
+      console.log(error);
     });
 }
 
@@ -62,18 +61,27 @@ function extractNeededData(data) {
 
   // declare empty array
   const venuesForMap = [];
+
   // Loop through json response
   data.forEach(venue => {
-    // Push the values we need into an array to use for the map
+
+    // Push the name, ID, and latlng into an array to use for the map
     venuesForMap.push({
       name: venue.name,
-      lat: venue.location.lat,
-      lng: venue.location.lng
+      id: venue.id,
+      latlng: 
+        [
+          venue.location.lat,
+          venue.location.lng
+        ]
+      
     });
   });
 
-  console.log(venuesForMap);
+  createMap(venuesForMap);
 }
+
+
 
 
   
