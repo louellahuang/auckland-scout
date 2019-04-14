@@ -1,24 +1,24 @@
-//Work from Louella
+// Work from Louella
 
 const version = '?v=20170901';
 const key = version + client_id + client_secret;
 const venueId = '59a45921351e3d43b07028b5';
 const venueUrl = 'https://api.foursquare.com/v2/venues/' + venueId;
 
+// Modal identifiers
 const jsPopUpButton = document.getElementById('#modalCenter');
 const jsModalLongTitle = document.getElementById('jsModalLongTitle');
+const jsVenueImg = document.getElementById('jsVenueImg');
 const jsVenueDescription = document.getElementById('jsVenueDescription');
 const jsVenueWebsite = document.getElementById('jsVenueWebsite');
 const jsMiniMap = document.getElementById('jsMiniMap');
 const jsDirections = document.getElementById('jsDirections');
-
 
 // Load modal
 function modal() {
     $('#modalCenter').on('shown.bs.modal', function () {
         //Add venue details through API call
         showVenueDetails();
-
     });
 }
 
@@ -44,17 +44,18 @@ function showVenueDetails() {
 
             // Clear/reset modal body copy so it's empty, before we add new data
             $('.modal-body').empty();
+            $('.modal-footer').empty();
 
             // Venue description
             if (res.response.venue.description !== undefined) {
                 jsVenueDescription.innerHTML(res.response.venue.description);
             }
 
-            //Construct modal/
+            //Construct modal image/
             if (res.response.venue.photos.groups.length > 0) {
                 var photoPrefix = res.response.venue.bestPhoto.prefix;
                 var photoSuffix = res.response.venue.bestPhoto.suffix;
-                $('<img src=' + photoPrefix + '100x100' + photoSuffix + '>').appendTo('.modal-body');
+                jsVenueImg.src(photoPrefix + '100x100' + photoSuffix);
             }
 
             // Add Phone
@@ -67,8 +68,7 @@ function showVenueDetails() {
                 jsVenueWebsite.innerHTML(res.response.venue.location.address + ', ' + res.response.venue.location.city)
             }
 
-            // Insert Mini map with user location
-            // https://leafletjs.com/reference-1.0.0.html
+            // Insert Mini map with user location https://leafletjs.com/reference-1.0.0.html
             let userLocation = [-36.8977931, 174.7854973];
             let miniMap = L.map('jsMiniMap', {
                 scrollWheelZoom: false
@@ -82,6 +82,7 @@ function showVenueDetails() {
 
             // Now toggle the Modal
             $('#myModal').modal('show');
+
         } // End Success
 
     }); // END AJAX request for venue data
