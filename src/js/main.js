@@ -112,7 +112,7 @@ function createMap(v) {
         popupAnchor: [0, -36]
       });
       var marker = L.marker(venue.latlng, { icon: serviceIcon }).addTo(mymap);
-      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
+      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" id="'+ venue.id +'" class="btn btn-primary popupButton" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
 
     } catch (error) {
       console.log(error);
