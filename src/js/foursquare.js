@@ -58,6 +58,7 @@ function makeSearchRequest(uri) {
 
 // Step 5 - Extract the data we are using from the json response
 function extractNeededData(data) {
+  console.log(data);
 
   // declare empty array
   const venuesForMap = [];
