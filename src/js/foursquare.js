@@ -19,6 +19,9 @@ function identifyCategory(e) {
     chosenCategory = '4bf58dd8d48988d165941735';
     createSearchRequestURI(chosenRadius, chosenCategory);
   }
+  else if (e.id == 'jsCatTrending') {
+    extractNeededData(trending.response.venues);
+  }
 }
 
 
