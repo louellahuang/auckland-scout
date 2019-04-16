@@ -217,7 +217,7 @@ function venueDetails(res) {
 
 
   // Directions
-  const directions = 'directions';
+  const directions = 'http://www.google.com/maps/place/' + res.venue.location.lat + ',' + res.venue.location.lng;
 
   createModalContent(title, venueImage, description, address, website, directions);
 };
