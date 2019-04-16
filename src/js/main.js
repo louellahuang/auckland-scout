@@ -194,13 +194,6 @@ function venueDetails(res) {
   } else {
     var address = 'This venue does not have an address';
   }
-
-
-  // remove previously loaded map first
-  // if (miniMap) {
-  //   miniMap.remove();
-  // }
-
   // Adding Mini Map
   // Insert Mini map with user location https://leafletjs.com/reference-1.0.0.html
   let venueLocation = [res.venue.location.lat, res.venue.location.lng];
@@ -213,17 +206,14 @@ function venueDetails(res) {
     id: 'mapbox.streets',
     accessToken: 'pk.eyJ1IjoibmlraXRhaG9pbmVzIiwiYSI6ImNqc203cHN5NDEwaGg0OXBpYnE0aXhhZmYifQ.58l8dUZg4uiFn7BYnZCJFA'
   }).addTo(miniMap);
-
-
-
   // Directions
   const directions = 'http://www.google.com/maps/place/' + res.venue.location.lat + ',' + res.venue.location.lng;
-
+  // Inject template with modal content
   createModalContent(title, venueImage, description, address, website, directions);
 };
 
+// Create Modal content
 function createModalContent(title, venueImage, description, address, website, directions) {
-
 
   modalContentContainer.innerHTML = `
   <div class="modal-header">
