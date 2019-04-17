@@ -1,3 +1,4 @@
+// Created by Tim
 const gulp = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass');
@@ -70,12 +71,12 @@ function scripts() {
   }))
   .pipe(concat('app.min.js'))
   .pipe(sourcemaps.init())
-  // .pipe(uglify({ // http://lisperator.net/uglifyjs/codegen
-  //   output: { // https://github.com/mishoo/UglifyJS2#output-options
-  //     comments: false,
-  //     quote_style: 3,
-  //   }
-  // }))
+  .pipe(uglify({ // http://lisperator.net/uglifyjs/codegen
+    output: { // https://github.com/mishoo/UglifyJS2#output-options
+      comments: false,
+      quote_style: 3,
+    }
+  }))
   .pipe(sourcemaps.write())
   .pipe(gulp.dest(paths.js.dest));
 }
