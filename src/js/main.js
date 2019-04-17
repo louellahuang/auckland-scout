@@ -214,7 +214,13 @@ function venueDetails(res) {
 
 // Create Modal content
 function createModalContent(title, venueImage, description, address, website, directions) {
+  // empty modal if it has contents
+  if($('#modalCenter')) {
+    $('#modalCenter').empty();
+  }
 
+
+  // modal content template
   modalContentContainer.innerHTML = `
   <div class="modal-header">
     <h5 class="modal-title" id="jsModalLongTitle">${title}</h5>
