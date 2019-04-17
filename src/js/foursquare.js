@@ -8,7 +8,7 @@ function identifyCategory(e) {
   // simple conditional to match the DOM element to the api ID
   if (e.id == 'jsCatTrending') {
     // chosenRadius = '6000';
-    extractNeededData(trending);
+    extractNeededData(trending.response.venues);
 
   } else if (e.id == 'jsCatParks') {
     chosenRadius = '2000';
