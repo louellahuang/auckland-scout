@@ -149,6 +149,7 @@ function createMap(v) {
   });
 }
 
+// Louella - API & Modal Work
 // Step 4 - Make the actual request
 function fetchVenue(uri) {
   fetch(uri)
@@ -236,4 +237,4 @@ function createModalContent(title, venueImage, description, address, website, di
   // Now toggle the Modal
   $('#modalCenter').modal('show');
 
-}
+} // Louella work end
