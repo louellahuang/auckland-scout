@@ -86,8 +86,6 @@ function createMap(v) {
       console.log(error);
     }
   });
-   // Louella
-   modal();
 }
 
 
