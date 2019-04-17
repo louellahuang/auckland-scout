@@ -8,9 +8,9 @@
   <title>AKL Scout</title>
   <link rel="stylesheet" href="build/css/bootstrap.min.css">
   <link rel="stylesheet" href="build/css/main.min.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-   crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+    integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
 </head>
 
 <body>
@@ -50,44 +50,27 @@
     <!-- Modal -- LOUELLA -->
     <div>
       <!-- Modal -->
-      <div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle" aria-hidden="true">
+      <div class="modal fade" id="modalCenter" tabindex="-1" role="dialog" aria-labelledby="modalCenterTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="jsModalLongTitle">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
+            <div id="modalContentContainer">
             </div>
-            <div class="modal-body">
-              <div class="venue-item">
-                <img class="d-block w-100" id="jsVenueImg" src="src/img/dog-3.jpg" alt="modal-example">
-              </div>
-              <p id="jsVenueDescription">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita voluptatibus, maxime amet quaerat. Quasi hic voluptatem quod, distinctio temporibus iure iste, illo corrupti in quisquam unde ipsa quibusdam, dignissimos voluptate!
-              </p>
-              <p class="jsVenueAddress">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              </p>
-              <a id="jsVenueWebsite" href="#">website link</a>
-              <div class="mini-map" id="jsMiniMap"></div>
+            <div class="mini-map" id="jsMiniMap"></div>
             </div>
-
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary" id="jsDirections">Get Directions</button>
-            </div>
+          </div>
           </div>
         </div>
       </div>
+
 
     </div>
 
   </div>
   <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
-   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
-   crossorigin=""></script>
-  
+    integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+    crossorigin=""></script>
+
   <script src="/build/js/jquery.min.js"></script>
   <!-- bootstrap including Popper.js -->
   <script src="/build/js/bootstrap.bundle.min.js"></script>
