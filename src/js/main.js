@@ -12,6 +12,7 @@ var modalContentContainer = document.getElementById('modalContentContainer');
 let currentUserLoc = [-36.8977931, 174.7854973];
 let currentUserLocStr = '';
 let mymap;
+let miniMap;
 let zoom = 0;
 
 

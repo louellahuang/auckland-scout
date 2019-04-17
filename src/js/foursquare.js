@@ -63,21 +63,21 @@ function makeSearchRequest(uri) {
 
 // Step 5 - Extract the data we are using from the json response - by Tim
 function extractNeededData(data) {
-  // declare empty array
-  const venuesForMap = [];
-  // Loop through json response
-  data.forEach(venue => {
-    // Push the name, ID, and latlng into an array to use for the map
-    venuesForMap.push({
-      name: venue.name,
-      id: venue.id,
-      latlng: 
-        [
-          venue.location.lat,
-          venue.location.lng
-        ]
+    // declare empty array
+    const venuesForMap = [];
+    // Loop through json response
+    data.forEach(venue => {
+      // Push the name, ID, and latlng into an array to use for the map
+      venuesForMap.push({
+        name: venue.name,
+        id: venue.id,
+        latlng: 
+          [
+            venue.location.lat,
+            venue.location.lng
+          ]
+      });
     });
-  });
-  // Create the map with the data gathered. Function located in main.js
-  createMap(venuesForMap);
+    // Create the map with the data gathered. Function located in main.js
+    createMap(venuesForMap);
 }

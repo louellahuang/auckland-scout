@@ -44,10 +44,12 @@ function venueDetails(res) {
     var address = 'This venue does not have an address';
   }
   // Adding Mini Map
-
+  if(miniMap) {
+    miniMap.remove();
+  }
   // Insert Mini map with user location https://leafletjs.com/reference-1.0.0.html
   let venueLocation = [res.venue.location.lat, res.venue.location.lng];
-  let miniMap = L.map('jsMiniMap', {
+  miniMap = L.map('jsMiniMap', {
     scrollWheelZoom: false
   }).setView(venueLocation, 17);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -66,10 +68,8 @@ function venueDetails(res) {
 function createModalContent(title, venueImage, description, address, website, directions) {
   // empty modal if it has contents
 
-  
-
   while(modalContentContainer.firstElementChild) {
-    modalContentContainer.remove(firstElementChild);
+    modalContentContainer.removeChild(modalContentContainer.firstChild);
   }
 
   // modal content template
