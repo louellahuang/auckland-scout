@@ -5,10 +5,14 @@ const jsCatTrending = document.getElementById('jsCatTrending');
 const jsCatParks = document.getElementById('jsCatParks');
 const jsCatBeaches = document.getElementById('jsCatBeaches');
 const jsCatLookouts = document.getElementById('jsCatLookouts');
+
+// Modal identifiers
+var modalContentContainer = document.getElementById('modalContentContainer');
 // These need to be global variables in order to access them from different functions
 let currentUserLoc = [-36.8977931, 174.7854973];
 let currentUserLocStr = '';
 let mymap;
+let miniMap;
 let zoom = 0;
 
 
@@ -81,7 +85,7 @@ function createMap(v) {
         popupAnchor: [0, -36]
       });
       var marker = L.marker(venue.latlng, { icon: serviceIcon }).addTo(mymap);
-      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" id="'+ venue.id +'" class="btn btn-primary popupButton" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
+      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" id="' + venue.id + '" class="btn btn-primary" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
 
       //louella - target pop up button to populate details
       const version = '?v=20170901';
@@ -92,7 +96,7 @@ function createMap(v) {
 
       marker.on('popupopen', () => {
         // pop up button
-        const jsPopUpButton = document.getElementById(venue.id);
+        const jsPopUpButton = document.getElementById(venueId);
         // click function
         jsPopUpButton.addEventListener('click', (e) => {
           console.log(e.target);
@@ -105,8 +109,6 @@ function createMap(v) {
       console.log(error);
     }
   });
-   // Louella
-   modal();
 }
 
 
