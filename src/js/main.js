@@ -5,6 +5,17 @@ const jsCatTrending = document.getElementById('jsCatTrending');
 const jsCatParks = document.getElementById('jsCatParks');
 const jsCatBeaches = document.getElementById('jsCatBeaches');
 const jsCatLookouts = document.getElementById('jsCatLookouts');
+//
+// Modal identifiers
+var modalContentContainer = document.getElementById('modalContentContainer');
+var modalContentFooter = document.getElementById('modalContentFooter');
+const jsPopUpButton = document.getElementById('#modalCenter');
+const jsModalLongTitle = document.getElementById('jsModalLongTitle');
+const jsVenueImg = document.getElementById('jsVenueImg');
+const jsVenueDescription = document.getElementById('jsVenueDescription');
+const jsVenueWebsite = document.getElementById('jsVenueWebsite');
+const jsMiniMap = document.getElementById('jsMiniMap');
+const jsDirections = document.getElementById('jsDirections');
 // These need to be global variables in order to access them from different functions
 let currentUserLoc = [-36.8977931, 174.7854973];
 let currentUserLocStr = '';
