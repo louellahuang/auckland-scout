@@ -31,14 +31,14 @@ function identifyCategory(e) {
 // Step 3 - Create the search query request uri - by Tim
 function createSearchRequestURI(rad, cat) {
   const baseURI = 'https://api.foursquare.com/v2/venues/search?v=20170901';
-  // const client_id = '&client_id=' + 'Q5PQQNTJS4UGM10I1RWODUVC4XS2PBULBDYZKFLAFECJ4ZIM';
-  // const client_secret = '&client_secret=' + '4TMTXMB4LL35O3GR1QXONNBAJ5OCGZUO5HLWAQQGSHHPZZV2';
-  const latlong = '&ll=' + currentUserLocStr;  // One Tree Hill
+
+  const latlong = '&ll=' + currentUserLocStr;
   // This value will be a variable
   const radius = '&radius=' + rad;
   // This value will be a variable
   const categoryId = '&categoryId=' + cat;
   // Put all the pieces together
+  // client_id and client_secret are variables located in auth.js
   const requestURI = baseURI + client_id + client_secret + latlong + radius + categoryId;
   // run next function
   makeSearchRequest(requestURI);
