@@ -91,7 +91,7 @@ function createMap(v) {
         popupAnchor: [0, -36]
       });
       var marker = L.marker(venue.latlng, { icon: serviceIcon }).addTo(mymap);
-      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
+      marker.bindPopup('<div>' + venue.name + '</div>' + '<button type="button" id="' + venue.id + '" class="btn btn-primary" data-toggle="modal" data-target="#modalCenter">' + 'Explore' + '</button>')
 
       //louella - target pop up button to populate details
       const version = '?v=20170901';
@@ -102,7 +102,7 @@ function createMap(v) {
 
       marker.on('popupopen', () => {
         // pop up button
-        const jsPopUpButton = document.getElementById(venue.id);
+        const jsPopUpButton = document.getElementById(venueId);
         // click function
         jsPopUpButton.addEventListener('click', (e) => {
           console.log(e.target);
