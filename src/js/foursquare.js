@@ -19,6 +19,9 @@ function identifyCategory(e) {
     chosenCategory = '4bf58dd8d48988d165941735';
     createSearchRequestURI(chosenRadius, chosenCategory);
   }
+  else if (e.id == 'jsCatTrending') {
+    extractNeededData(trending.response.venues);
+  }
 }
 
 
@@ -58,6 +61,7 @@ function makeSearchRequest(uri) {
 
 // Step 5 - Extract the data we are using from the json response
 function extractNeededData(data) {
+  console.log(data);
 
   // declare empty array
   const venuesForMap = [];
