@@ -1,4 +1,3 @@
-
 // Step 4 - Make the actual request
 function fetchVenue(uri) {
   fetch(uri)
@@ -39,7 +38,7 @@ function venueDetails(res) {
     var website = res.venue.shortUrl;
   }
   // Add address
-  if (res.venue.location.address !== undefined) {
+  if (res.venue.location.address !== undefined && res.venue.location.city !== undefined) {
     var address = res.venue.location.address + ', ' + res.venue.location.city;
   } else {
     var address = 'This venue does not have an address';
@@ -59,16 +58,18 @@ function venueDetails(res) {
   // Directions
   const directions = 'http://www.google.com/maps/place/' + res.venue.location.lat + ',' + res.venue.location.lng;
   // Inject template with modal content
-  createModalContent(title, venueImage, description, address, website, directions);
-};
+  createModalContent(title, venueImage, description, address, website, directions); 
+}
 
 // Create Modal content
 function createModalContent(title, venueImage, description, address, website, directions) {
   // empty modal if it has contents
-  // if($('#modalCenter')) {
-  //   $('#modalCenter').empty();
-  // }
 
+  
+
+  while(modalContentContainer.firstElementChild) {
+    modalContentContainer.remove(firstElementChild);
+  }
 
   // modal content template
   modalContentContainer.innerHTML = `

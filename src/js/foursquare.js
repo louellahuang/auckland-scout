@@ -1,10 +1,16 @@
-// Step 2 - Link the html element to the foursquare category ID
+// - by Tim
+// Step 1 - Is the event listener which identifies event.target. See main.js - by Tim
+// Step 2 - Link the html element to the foursquare category ID - by Tim
 function identifyCategory(e) {
   // declare variables
   let chosenRadius = '0';
   let chosenCategory = '0';
   // simple conditional to match the DOM element to the api ID
-  if (e.id == 'jsCatParks') {
+  if (e.id == 'jsCatTrending') {
+    // chosenRadius = '6000';
+    extractNeededData(trending.response.venues);
+
+  } else if (e.id == 'jsCatParks') {
     chosenRadius = '2000';
     chosenCategory = '4bf58dd8d48988d163941735';
     createSearchRequestURI(chosenRadius, chosenCategory);
@@ -25,24 +31,24 @@ function identifyCategory(e) {
 }
 
 
-// Step 3 - Create the search query request uri
+// Step 3 - Create the search query request uri - by Tim
 function createSearchRequestURI(rad, cat) {
   const baseURI = 'https://api.foursquare.com/v2/venues/search?v=20170901';
-  // const client_id = '&client_id=' + 'Q5PQQNTJS4UGM10I1RWODUVC4XS2PBULBDYZKFLAFECJ4ZIM';
-  // const client_secret = '&client_secret=' + '4TMTXMB4LL35O3GR1QXONNBAJ5OCGZUO5HLWAQQGSHHPZZV2';
-  const latlong = '&ll=' + '-36.8786499,174.7602798';
+
+  const latlong = '&ll=' + currentUserLocStr;
   // This value will be a variable
   const radius = '&radius=' + rad;
   // This value will be a variable
   const categoryId = '&categoryId=' + cat;
   // Put all the pieces together
+  // client_id and client_secret are variables located in auth.js
   const requestURI = baseURI + client_id + client_secret + latlong + radius + categoryId;
-  
+  // run next function
   makeSearchRequest(requestURI);
 }
 
 
-// Step 4 - Make the actual request
+// Step 4 - Make the actual request - by Tim
 function makeSearchRequest(uri) {
   fetch(uri)
     .then(function(response) {
@@ -50,25 +56,25 @@ function makeSearchRequest(uri) {
     })
     .then(function(myJson) {
       extractNeededData(myJson.response.venues);
-      //console.log(myJson.response.venues);
+      console.log(myJson.response);
     })
     .catch(function(error) {
-      // Code for handling errors
       console.log(error);
     });
 }
 
 
-// Step 5 - Extract the data we are using from the json response
+// Step 5 - Extract the data we are using from the json response - by Tim
 function extractNeededData(data) {
+<<<<<<< HEAD
   console.log(data);
 
+=======
+>>>>>>> c6f1b65f03a5443a42076af883d9e474725d9854
   // declare empty array
   const venuesForMap = [];
-
   // Loop through json response
   data.forEach(venue => {
-
     // Push the name, ID, and latlng into an array to use for the map
     venuesForMap.push({
       name: venue.name,
@@ -78,14 +84,8 @@ function extractNeededData(data) {
           venue.location.lat,
           venue.location.lng
         ]
-      
     });
   });
-
+  // Create the map with the data gathered. Function located in main.js
   createMap(venuesForMap);
 }
-
-
-
-
-  
