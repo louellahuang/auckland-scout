@@ -80,7 +80,8 @@ function createMap(v) {
   v.forEach(function (venue) {
     try {
       var serviceIcon = L.icon({
-        iconUrl: '../build/img/pin.svg',
+        // iconUrl: '../build/img/pin.svg', // Use this for local environment
+        iconUrl: '../aklscout/build/img/pin.svg', // Use this for live server
         iconSize: [72, 72],
         popupAnchor: [0, -36]
       });
